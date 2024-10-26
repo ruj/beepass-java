@@ -1,4 +1,4 @@
-package com.beehome.beepass.controllers;
+package com.beehome.beepass.utils;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
