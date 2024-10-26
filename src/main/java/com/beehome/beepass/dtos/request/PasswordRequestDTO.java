@@ -1,5 +1,6 @@
 package com.beehome.beepass.dtos.request;
 
+import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -15,9 +16,14 @@ public class PasswordRequestDTO {
     @Max(value = 32, message = "Length must be at most 32")
     private Integer length;
 
-    private Boolean includeUppercase;
-    private Boolean includeLowercase;
-    private Boolean includeNumbers;
-    private Boolean includeSpecialChars;
+    private Boolean includeUppercase = false;
+    private Boolean includeLowercase = false;
+    private Boolean includeNumbers = false;
+    private Boolean includeSpecialChars = false;
+
+    @AssertTrue(message = "At least one character type must be selected")
+    public boolean isAtLeastOneCharacterTypeSelected() {
+        return includeUppercase || includeLowercase || includeNumbers || includeSpecialChars;
+    }
 
 }
