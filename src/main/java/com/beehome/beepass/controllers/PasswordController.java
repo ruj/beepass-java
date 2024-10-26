@@ -2,11 +2,14 @@ package com.beehome.beepass.controllers;
 
 import com.beehome.beepass.dtos.request.PasswordRequestDTO;
 import com.beehome.beepass.dtos.response.PasswordResponseDTO;
+import com.beehome.beepass.models.Password;
 import com.beehome.beepass.services.PasswordService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -25,6 +28,11 @@ public class PasswordController {
                 request.getIncludeSpecialChars()
         );
         return ResponseEntity.ok(new PasswordResponseDTO(password));
+    }
+
+    @GetMapping("/password-history")
+    public ResponseEntity<List<Password>> getPasswords() {
+        return ResponseEntity.ok(passwordService.getPasswords());
     }
 
 }

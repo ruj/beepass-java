@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
+import java.util.List;
 
 @Service
 public class PasswordService {
@@ -34,6 +35,10 @@ public class PasswordService {
         passwordRepository.save(password);
 
         return password.getPassword();
+    }
+
+    public List<Password> getPasswords() {
+        return passwordRepository.findAll();
     }
 
 }
