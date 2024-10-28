@@ -1,3 +1,44 @@
+### API
+
+#### POST /api/generate-password
+
+Request Body:
+```json
+{
+    "length": 12,
+    "includeUppercase": true,
+    "includeLowercase": true,
+    "includeNumbers": true,
+    "includeSpecialChars": false
+}
+```
+
+Response:
+```json
+{
+  "password": "Abc123!@#"
+}
+```
+
+#### GET /api/password-history
+
+Response:
+```json
+[
+  {
+    "id": 1,
+    "password": "Abc123!@#",
+    "createdAt": "2024-10-27T10:15:30"
+  },
+  {
+    "id": 2,
+    "password": "Xyz456$%^",
+    "createdAt": "2024-10-26T08:45:00"
+  }
+]
+
+```
+
 ### MySQL (ver. 8.0.31)
 
 ```sql
